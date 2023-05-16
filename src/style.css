@@ -61,10 +61,11 @@ input {
   cursor: pointer;
 }
 
+ul li {
+  padding-right: 15em;
+  margin-left: 5px;
+}
+
 .leftscoredisplay ul li:nth-child(even) {
   background-color: #e5e5e5;
-}
-ul li {
-    padding-right: 15em;
-    margin-left: 5px;
 }
