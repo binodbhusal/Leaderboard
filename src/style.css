@@ -1,0 +1,70 @@
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 20em;
+  justify-content: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.leftscoredisplay {
+  border: 3px solid #000;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.topleft {
+  display: flex;
+  flex-direction: row;
+  gap: 4em;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+#btnRefresh {
+  height: 100%;
+  width: 35%;
+  margin-top: 25px;
+  background: transparent;
+  border: 1px solid #000;
+  box-shadow: 5px 5px #000;
+  cursor: pointer;
+}
+
+input {
+  width: 20rem;
+  height: 2rem;
+  margin-bottom: 0.5rem;
+  border: 2px solid #000;
+}
+
+#btnSubmit {
+  width: 30%;
+  margin-left: 70%;
+  box-shadow: 5px 5px #000;
+  background: transparent;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.leftscoredisplay ul li:nth-child(even) {
+  background-color: #e5e5e5;
+}
+ul li {
+    padding-right: 15em;
+    margin-left: 5px;
+}
