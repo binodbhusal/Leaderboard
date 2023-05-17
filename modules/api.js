@@ -6,22 +6,22 @@ const fetchLeaderboardData = async () => {
     throw Error('Not success');
   }
   const data = await res.json();
-  return data;
+  if (!Array.isArray(data.result)) {
+    throw new Error('Invalid leaderboard data. Expected an array of scores.');
+  }
+  return data.result;
 };
-
 const postUserInput = async (userInput, scoreInput) => {
   const data = { user: userInput, score: scoreInput };
-  const res = fetch(api, {
+  const res = await fetch(api, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
     },
     body: JSON.stringify(data),
   });
-  if (!res.ok) {
-    throw Error('Failed to post input');
-  }
-  const resData = await res.JSON();
+  const resData = await res.json();
   return resData;
 };
+
 export { fetchLeaderboardData, postUserInput };

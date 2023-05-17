@@ -13,3 +13,11 @@ const updateLeaderboard = async () => {
     leaderboard.appendChild(listItem);
   });
 };
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  const userInput = document.getElementById('userInput');
+  const userScore = document.getElementById('userScore');
+  await postUserInput(userInput, userScore);
+  await fetchLeaderboardData();
+};
+export { updateLeaderboard, handleSubmit };
