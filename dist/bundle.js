@@ -10,6 +10,26 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./modules/api.js":
+/*!************************!*\
+  !*** ./modules/api.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"fetchLeaderboardData\": () => (/* binding */ fetchLeaderboardData),\n/* harmony export */   \"postUserInput\": () => (/* binding */ postUserInput)\n/* harmony export */ });\nconst api = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Zl4d7IVkemOTTVg2fUdz/scores/';\n\nconst fetchLeaderboardData = async () => {\n  const res = await fetch(api);\n  if (!res.ok) {\n    throw Error('Not success');\n  }\n  const data = await res.json();\n  if (!Array.isArray(data.result)) {\n    throw new Error('Invalid leaderboard data. Expected an array of scores.');\n  }\n  return data.result;\n};\nconst postUserInput = async (userInput, scoreInput) => {\n  const data = { user: userInput, score: scoreInput };\n  const res = await fetch(api, {\n    method: 'POST',\n    headers: {\n      'content-type': 'application/json',\n    },\n    body: JSON.stringify(data),\n  });\n  const resData = await res.json();\n  return resData;\n};\n\n\n\n\n//# sourceURL=webpack://leaderboard/./modules/api.js?");
+
+/***/ }),
+
+/***/ "./modules/leaderboard.js":
+/*!********************************!*\
+  !*** ./modules/leaderboard.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"handleSubmit\": () => (/* binding */ handleSubmit),\n/* harmony export */   \"updateLeaderboard\": () => (/* binding */ updateLeaderboard)\n/* harmony export */ });\n/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api.js */ \"./modules/api.js\");\n\n\nconst updateLeaderboard = async () => {\n  const leaderboard = document.getElementById('scoreboard');\n  const scores = await (0,_api_js__WEBPACK_IMPORTED_MODULE_0__.fetchLeaderboardData)();\n\n  leaderboard.innerHTML = '';\n  if (!Array.isArray(scores)) {\n    throw new Error('Invalid leaderboard data,Expected an array of scores.');\n  }\n\n  scores.slice(0, 100).forEach((score) => {\n    const listItem = document.createElement('li');\n    listItem.textContent = `${score.user}: ${score.score}`;\n    leaderboard.appendChild(listItem);\n  });\n};\nconst handleSubmit = async (event) => {\n  event.preventDefault();\n  const userInput = document.getElementById('userInput');\n  const userScore = document.getElementById('userScore');\n  await (0,_api_js__WEBPACK_IMPORTED_MODULE_0__.postUserInput)(userInput.value, userScore.value);\n  await updateLeaderboard();\n};\n\n\n//# sourceURL=webpack://leaderboard/./modules/leaderboard.js?");
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/style.css":
 /*!*************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/style.css ***!
@@ -116,7 +136,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\nconst api = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Zl4d7IVkemOTTVg2fUdz/scores/';\nconsole.log(fetch(api));\n\n\n//# sourceURL=webpack://leaderboard/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_leaderboard_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/leaderboard.js */ \"./modules/leaderboard.js\");\n\n\n\n\n(0,_modules_leaderboard_js__WEBPACK_IMPORTED_MODULE_1__.updateLeaderboard)();\nconst form = document.querySelector('form');\nform.addEventListener('submit', async (event) => {\n  event.preventDefault();\n  await (0,_modules_leaderboard_js__WEBPACK_IMPORTED_MODULE_1__.handleSubmit)(event);\n  await (0,_modules_leaderboard_js__WEBPACK_IMPORTED_MODULE_1__.updateLeaderboard)();\n  form.reset();\n});\nconst refreshBtn = document.getElementById('btnRefresh');\nrefreshBtn.addEventListener('click', () => {\n  window.location.reload();\n  (0,_modules_leaderboard_js__WEBPACK_IMPORTED_MODULE_1__.updateLeaderboard)();\n});\n\n//# sourceURL=webpack://leaderboard/./src/index.js?");
 
 /***/ })
 
