@@ -24,4 +24,4 @@ const postUserInput = async (userInput, scoreInput) => {
   const resData = await res.JSON();
   return resData;
 };
-export default { fetchLeaderboardData, postUserInput };
+export { fetchLeaderboardData, postUserInput };
