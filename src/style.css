@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bungee&family=Days+One&family=Righteous&display=swap');
+
 html {
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Lato', sans-serif;
+  background: url(/asset/backleader.png);
 }
 
 .container {
@@ -11,15 +14,18 @@ body {
   flex-direction: row;
   gap: 20em;
   justify-content: center;
+  max-width: 100%;
 }
 
 ul {
   list-style: none;
-  padding: 0;
+  padding: 0 0;
+  gap: 20px;
 }
 
 .leftscoredisplay {
-  border: 3px solid #000;
+  border: 3px solid #e57c23;
+  border-radius: 8px;
 }
 
 form {
@@ -30,42 +36,97 @@ form {
 .topleft {
   display: flex;
   flex-direction: row;
-  gap: 4em;
+  gap: 1em;
   margin-bottom: 1em;
   width: 100%;
 }
 
 #btnRefresh {
-  height: 100%;
-  width: 35%;
+  height: 40px;
+  width: 25%;
+  margin-left: 10%;
   margin-top: 25px;
+  color: #feff86;
   background: transparent;
-  border: 1px solid #000;
-  box-shadow: 5px 5px #000;
+  font-family: 'Black Han Sans', cursive;
+  box-shadow: 5px 5px #e57c23;
   cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid #e57c23;
+  font-size: 1em;
+}
+
+#btnRefresh:hover {
+  color: #1b9c85;
+  background: #e5e5e5;
 }
 
 input {
   width: 20rem;
-  height: 2rem;
+  height: 2.5rem;
   margin-bottom: 0.5rem;
-  border: 2px solid #000;
+  border: 2px solid #e57c23;
+  border-radius: 12px;
+  outline: none;
+}
+
+input::placeholder {
+  font-weight: 700;
+  color: #1b9c85;
+  font-size: 1.3em;
+  padding-left: 8px;
 }
 
 #btnSubmit {
   width: 30%;
+  height: 40px;
   margin-left: 70%;
-  box-shadow: 5px 5px #000;
-  background: transparent;
-  border: 1px solid #000;
   cursor: pointer;
+  color: #feff86;
+  background: transparent;
+  font-family: 'Black Han Sans', cursive;
+  border: 1px solid #e57c23;
+  box-shadow: 5px 5px #e57c23;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+#btnSubmit:hover {
+  color: #1b9c85;
+  background: #e5e5e5;
 }
 
 ul li {
   padding-right: 15em;
-  margin-left: 5px;
+  color: #19376d;
+  font-family: 'Days One', cursive;
+  padding-left: 20px;
+  background: #e5e5e5;
 }
 
 .leftscoredisplay ul li:nth-child(even) {
-  background-color: #e5e5e5;
+  background-color: #ffb84c;
+}
+
+h1 {
+  margin: 4em 0 1em 40%;
+  border: 2px solid #fff;
+  width: 25%;
+  text-align: center;
+  border-radius: 25px;
+  background: #ffb84c;
+  color: #19376d;
+  font-family: 'Righteous', cursive;
+  padding: 0.3em 0;
+  box-shadow: 10px 10px #8b1874;
+}
+
+h2 {
+  border: 2px solid #e57c23;
+  text-align: center;
+  border-radius: 8px;
+  background: #1b9c85;
+  color: #e5e5e5;
+  font-family: 'Bungee', cursive;
+  padding: 0.3em 0.3em;
 }
